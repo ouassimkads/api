@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+
+
+enum DossierType {
+  MATERIEL
+  CORPOREL
+  MARITIME
+}
+
+enum DossierStatut {
+  OUVERT
+  EN_COURS
+  EN_ATTENTE
+  CLOTURE
+  REJETE
+}
+
+model Dossier {
+  id             String        @id @default(cuid())
+  numeroDossier  String        @unique
+  numeroSinistre String        @unique
+  type           DossierType
+  agence         String
+  client         String
+  dateSinistre   DateTime
+  dateCloture    DateTime?
+  statut         DossierStatut @default(OUVERT)
+  partieAdverse  String?
+  agenceAdverse  String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  documents Document[]
+  @@index([statut])
+  @@index([type])
+  @@map("dossiers")
+}
+
+model Document {
+  id           String   @id @default(cuid())
+  dossierId    String
+  dossier      Dossier  @relation(fields: [dossierId], references: [id], onDelete: Cascade)
+  originalName String   // name shown to the user
+  storedName   String   @unique // random name on disk
+  mimeType     String
+  size         Int
+  createdAt    DateTime @default(now())
+
+  @@index([dossierId])
+  @@map("documents")
+}

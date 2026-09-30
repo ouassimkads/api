@@ -1,0 +1,64 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+
+
+# Dependencies
+node_modules
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.agents
+.claude
+.windsurf
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+out/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Uploads / user files
+uploads/
+media/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Misc
+*.swp
+*.swo
