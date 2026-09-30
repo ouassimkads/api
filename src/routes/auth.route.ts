@@ -48,12 +48,12 @@ router.post('/login', async (req: Request, res: Response) => {
 
     const token = await createSessionToken({ email });
 
-    res.cookie(SESSION_COOKIE, token, {
+    res.cookie('session', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/',
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days in milliseconds
     });
 
     return res.status(200).json({ email });
