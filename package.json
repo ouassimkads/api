@@ -21,7 +21,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.10.0",
+    "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "@types/multer": "^2.2.0",
     "bcrypt": "^6.0.0",
@@ -30,11 +30,11 @@
     "dotenv": "^18.0.4",
     "express": "^5.2.1",
     "jose": "^6.2.12",
-    "multer": "^2.4.0"
+    "multer": "^2.4.0",
+    "pg": "^8.23.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
-    "@types/better-sqlite3": "^9.6.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
