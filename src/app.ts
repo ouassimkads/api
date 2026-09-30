@@ -11,14 +11,12 @@ dotenv.config();
 
 const app = express();
 
-if (process.env.NODE_ENV !== 'production') {
-  app.use(
-    cors({
-      origin: ['http://localhost:5173', 'https://web-mq3l.onrender.com'],
-      credentials: true,
-    }),
-  );
-}
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://web-mq3l.onrender.com'],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
